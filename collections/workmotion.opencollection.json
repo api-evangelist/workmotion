@@ -1,0 +1,186 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WorkMotion Partner API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": { "name": "Employees", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List employees", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.workmotion.com/v1/employees" },
+          "docs": "Returns a paginated list of talents employed through WorkMotion."
+        },
+        {
+          "info": { "name": "Create an employee", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.workmotion.com/v1/employees",
+            "body": { "type": "json", "data": "{\n  \"firstName\": \"\",\n  \"lastName\": \"\",\n  \"email\": \"\",\n  \"countryOfEmployment\": \"DE\",\n  \"employmentType\": \"eor\"\n}" }
+          },
+          "docs": "Creates a new talent record, typically the first step of onboarding."
+        },
+        {
+          "info": { "name": "Retrieve an employee", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.workmotion.com/v1/employees/{{employeeId}}" },
+          "docs": "Retrieve a single talent by id."
+        },
+        {
+          "info": { "name": "Update an employee", "type": "http" },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.workmotion.com/v1/employees/{{employeeId}}",
+            "body": { "type": "json", "data": "{\n  \"status\": \"active\"\n}" }
+          },
+          "docs": "Update fields on an existing talent."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Contracts", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List contracts for an employee", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.workmotion.com/v1/employees/{{employeeId}}/contracts" },
+          "docs": "List employment contracts belonging to a talent."
+        },
+        {
+          "info": { "name": "Generate a contract", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.workmotion.com/v1/employees/{{employeeId}}/contracts",
+            "body": { "type": "json", "data": "{\n  \"grossSalary\": 60000,\n  \"currency\": \"EUR\",\n  \"paidTimeOffDays\": 28,\n  \"startDate\": \"2026-08-01\"\n}" }
+          },
+          "docs": "Generate a legally compliant employment contract for the talent."
+        },
+        {
+          "info": { "name": "Retrieve a contract", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.workmotion.com/v1/contracts/{{contractId}}" },
+          "docs": "Retrieve a single contract by id."
+        },
+        {
+          "info": { "name": "Amend a contract", "type": "http" },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.workmotion.com/v1/contracts/{{contractId}}",
+            "body": { "type": "json", "data": "{\n  \"grossSalary\": 66000,\n  \"currency\": \"EUR\",\n  \"effectiveDate\": \"2026-10-01\"\n}" }
+          },
+          "docs": "Apply a contract change (e.g., compensation or terms) to an existing contract."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Onboarding", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Start an onboarding", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.workmotion.com/v1/onboardings",
+            "body": { "type": "json", "data": "{\n  \"country\": \"DE\",\n  \"employmentType\": \"eor\"\n}" }
+          },
+          "docs": "Initiate an accelerated onboarding for a new hire in a given country."
+        },
+        {
+          "info": { "name": "Retrieve onboarding status", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.workmotion.com/v1/onboardings/{{onboardingId}}" },
+          "docs": "Retrieve an onboarding record and its current step."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Absences", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List absences", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.workmotion.com/v1/absences" },
+          "docs": "List absence and time-off requests."
+        },
+        {
+          "info": { "name": "Submit an absence request", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.workmotion.com/v1/absences",
+            "body": { "type": "json", "data": "{\n  \"employeeId\": \"\",\n  \"type\": \"paid_time_off\",\n  \"startDate\": \"2026-08-10\",\n  \"endDate\": \"2026-08-14\"\n}" }
+          },
+          "docs": "Submit a time-off request for a talent."
+        },
+        {
+          "info": { "name": "Retrieve an absence", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.workmotion.com/v1/absences/{{absenceId}}" },
+          "docs": "Retrieve a single absence by id."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Documents", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List documents for an employee", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.workmotion.com/v1/employees/{{employeeId}}/documents" },
+          "docs": "List documents attached to a talent."
+        },
+        {
+          "info": { "name": "Upload a document", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.workmotion.com/v1/employees/{{employeeId}}/documents",
+            "body": { "type": "multipart-form", "data": [] }
+          },
+          "docs": "Upload a document (contract, payslip, compliance paperwork) for a talent."
+        },
+        {
+          "info": { "name": "Download a document", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.workmotion.com/v1/documents/{{documentId}}" },
+          "docs": "Download a document binary by id."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Cost Calculator", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Calculate employment cost", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.workmotion.com/v1/cost-calculator",
+            "body": { "type": "json", "data": "{\n  \"country\": \"DE\",\n  \"grossSalary\": 60000,\n  \"currency\": \"EUR\",\n  \"bonus\": 5000\n}" }
+          },
+          "docs": "Return the fully-loaded cost of employment for a gross salary in a country."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Webhooks", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List webhook subscriptions", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.workmotion.com/v1/webhooks" },
+          "docs": "List configured webhook subscriptions."
+        },
+        {
+          "info": { "name": "Create a webhook subscription", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.workmotion.com/v1/webhooks",
+            "body": { "type": "json", "data": "{\n  \"url\": \"https://example.com/hooks/workmotion\",\n  \"events\": [\"employee.created\", \"contract.amended\", \"onboarding.completed\"]\n}" }
+          },
+          "docs": "Register a webhook subscription for platform events."
+        },
+        {
+          "info": { "name": "Delete a webhook subscription", "type": "http" },
+          "http": { "method": "DELETE", "url": "https://api.workmotion.com/v1/webhooks/{{webhookId}}" },
+          "docs": "Delete a webhook subscription by id."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: WorkMotion
+providerId: workmotion
+created: '2026-07-01'
+modified: '2026-07-01'
+reconciled: false
+tags:
+- Employer of Record
+- EOR
+- Global Employment
+- HR
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  WorkMotion's partner / Open API is access-gated and its published reference
+  does not expose specific numeric rate-limit values on the open web.
+  Consistent with SaaS partner APIs of this kind, expect per-credential
+  request throttling, standard 429 responses on exceeding limits, and
+  cursor / page-based pagination on list endpoints to bound response size.
+  Specific per-endpoint limits are not reconciled in this artifact.
+notes: >-
+  No public numeric rate limits are documented. The values below are modeled
+  as the common shape for a partner HR API; confirm exact RPM / RPS, burst,
+  and pagination caps against WorkMotion partner documentation during
+  reconciliation.
+sources:
+- https://workmotion.com/integrations/
+responseCodes:
+  throttled: 429
+limits:
+- name: Requests Per Minute (per credential)
+  scope: credential
+  metric: requests
+  limit: see provider documentation
+  notes: Modeled; per-partner-credential throttling assumed, exact value not published.
+- name: List Pagination
+  scope: endpoint
+  metric: records
+  limit: '200'
+  notes: Modeled default page size cap of 200 records on list endpoints.
+policies:
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and honor Retry-After on 429 responses.
+- name: Pagination
+  description: Use page / pageSize parameters to page through large collections rather than requesting unbounded lists.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

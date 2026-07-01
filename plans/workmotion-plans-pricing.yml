@@ -1,0 +1,131 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: WorkMotion
+providerId: workmotion
+created: '2026-07-01'
+modified: '2026-07-01'
+reconciled: true
+tags:
+- Employer of Record
+- EOR
+- Global Employment
+- HR
+- Payroll
+- Contractors
+- Plans
+description: >-
+  WorkMotion is priced per talent (employee) or per contractor per month,
+  not per API call. There are three published plans - Employer of Record
+  (EOR), Direct Hiring, and Contractor Management - each with a published
+  starting price and multi-currency display (EUR / USD / GBP / CHF). Actual
+  pricing is sales-quoted and can be customized; every plan directs prospects
+  to "Talk To Sales." The partner / Open API itself is not separately metered
+  or priced and is made available to platform customers and integration
+  partners.
+notes: >-
+  Prices are published starting prices as of 2026-07-01 and are shown in the
+  buyer-selected currency; the platform lists no per-API-call charges. Verify
+  current prices and any minimums with WorkMotion sales during reconciliation.
+sources:
+- https://workmotion.com/pricing/
+- https://workmotion.com/integrations/
+plans:
+- id: workmotion-eor
+  name: Employer of Record (EOR)
+  type: subscription
+  description: >-
+    WorkMotion acts as the legal employer in 160+ countries, handling
+    end-to-end payroll, compliant contracts, and legal / HR guidance. Priced
+    per talent per month; sales-quoted.
+  entries:
+  - label: EOR per talent
+    name: eor_per_talent
+    type: recurring
+    metric: talents
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: from $549 / €499 / £399 / CHF459 per talent/month (starting; sales-quoted)
+    userMultiplied: true
+  elements:
+  - name: Global Hiring in 160+ Countries
+  - name: End-to-End Payroll
+  - name: Compliant Contract Templates
+  - name: Legal and HR Guidance
+- id: workmotion-direct
+  name: Direct Hiring
+  type: subscription
+  description: >-
+    Register and hire directly as an employer in another country for a
+    longer-term strategic presence, with legal / HR guidance and custom
+    benefits. Priced per talent per month; sales-quoted.
+  entries:
+  - label: Direct Hiring per talent
+    name: direct_per_talent
+    type: recurring
+    metric: talents
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: from $429 / €399 / £339 / CHF379 per talent/month (starting; sales-quoted)
+    userMultiplied: true
+  elements:
+  - name: Employer Registration in Country
+  - name: Custom Benefits Offerings
+  - name: Legal and HR Guidance
+- id: workmotion-contractor
+  name: Contractor Management
+  type: subscription
+  description: >-
+    Onboard, manage, and pay international contractors and freelancers in
+    160+ countries while avoiding misclassification risk. Priced per
+    contractor per month; sales-quoted.
+  entries:
+  - label: Contractor per month
+    name: contractor_per_month
+    type: recurring
+    metric: contractors
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: from $31 / €29 / £24 / CHF28 per contractor/month (starting; sales-quoted)
+    userMultiplied: true
+  elements:
+  - name: Contractor Onboarding
+  - name: Misclassification Risk Protection
+  - name: Invoice and Project Management
+  - name: Payments in 160+ Countries
+- id: workmotion-partner-api
+  name: Partner / Open API
+  type: enterprise
+  description: >-
+    Access-gated partner / Open API for HRIS and payroll integration
+    (employees, contracts, onboarding, absences, documents, cost calculator,
+    webhooks). Not separately metered; provisioned to platform customers and
+    integration partners. Contact WorkMotion.
+  entries:
+  - label: Partner API Access
+    name: partner_api_access
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: included with platform / contact sales
+    userMultiplied: false
+  elements:
+  - name: Employees API
+  - name: Contracts API
+  - name: Onboarding API
+  - name: Absences API
+  - name: Documents API
+  - name: Cost Calculator API
+  - name: Webhooks API
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

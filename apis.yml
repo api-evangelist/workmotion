@@ -1,0 +1,186 @@
+aid: workmotion
+url: https://raw.githubusercontent.com/api-evangelist/workmotion/refs/heads/main/apis.yml
+name: WorkMotion
+kind: company
+description: WorkMotion is a global employment and Employer of Record (EOR) platform
+  that lets companies compliantly hire, onboard, and pay international employees and
+  contractors across 160+ countries. Its partner/Open API surfaces employee and
+  contract data, onboarding workflows, absences and time-off, documents, employment
+  cost calculations, and webhooks so HRIS and payroll systems can integrate with
+  WorkMotion's managed employment infrastructure.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Employer of Record
+- EOR
+- Global Employment
+- HR
+- Payroll
+- Onboarding
+- Contractors
+- Compliance
+created: '2026-07-01'
+modified: '2026-07-01'
+specificationVersion: '0.19'
+apis:
+- aid: workmotion:workmotion-employees-api
+  name: WorkMotion Employees API
+  tags:
+  - Employees
+  - Workforce
+  - HR
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://workmotion.com/integrations/
+  baseURL: https://api.workmotion.com/v1
+  properties:
+  - url: https://workmotion.com/integrations/
+    type: Documentation
+  - url: openapi/workmotion-openapi.yml
+    type: OpenAPI
+  - url: collections/workmotion.postman_collection.json
+    type: PostmanCollection
+  - url: collections/workmotion.opencollection.json
+    type: OpenCollection
+  description: Read and manage employees (talents) employed through WorkMotion,
+    including personal details, employment status, country of employment, and
+    lifecycle state from onboarding through offboarding.
+- aid: workmotion:workmotion-contracts-api
+  name: WorkMotion Contracts API
+  tags:
+  - Contracts
+  - Employment
+  - Compliance
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://workmotion.com/contracts-changes/
+  baseURL: https://api.workmotion.com/v1
+  properties:
+  - url: https://workmotion.com/contracts-changes/
+    type: Documentation
+  - url: openapi/workmotion-openapi.yml
+    type: OpenAPI
+  - url: collections/workmotion.postman_collection.json
+    type: PostmanCollection
+  - url: collections/workmotion.opencollection.json
+    type: OpenCollection
+  description: Generate, retrieve, and amend legally compliant employment contracts
+    for talents, including compensation terms, benefits, paid time off, and country
+    specific contract changes.
+- aid: workmotion:workmotion-onboarding-api
+  name: WorkMotion Onboarding API
+  tags:
+  - Onboarding
+  - Hiring
+  - Workflow
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://workmotion.com/accelerated-onboarding/
+  baseURL: https://api.workmotion.com/v1
+  properties:
+  - url: https://workmotion.com/accelerated-onboarding/
+    type: Documentation
+  - url: openapi/workmotion-openapi.yml
+    type: OpenAPI
+  - url: collections/workmotion.postman_collection.json
+    type: PostmanCollection
+  - url: collections/workmotion.opencollection.json
+    type: OpenCollection
+  description: Initiate and track accelerated global onboarding, moving a new hire
+    through country selection, talent details, contract generation, e-signature,
+    and completion.
+- aid: workmotion:workmotion-absences-api
+  name: WorkMotion Absences API
+  tags:
+  - Absences
+  - Time Off
+  - PTO
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://workmotion.com/integrations/
+  baseURL: https://api.workmotion.com/v1
+  properties:
+  - url: https://workmotion.com/integrations/
+    type: Documentation
+  - url: openapi/workmotion-openapi.yml
+    type: OpenAPI
+  - url: collections/workmotion.postman_collection.json
+    type: PostmanCollection
+  - url: collections/workmotion.opencollection.json
+    type: OpenCollection
+  description: Submit, approve, and query employee absences and time-off requests
+    (paid time off, sick leave, and other leave types) and read remaining leave
+    balances.
+- aid: workmotion:workmotion-documents-api
+  name: WorkMotion Documents API
+  tags:
+  - Documents
+  - Files
+  - E-Signature
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://workmotion.com/integrations/
+  baseURL: https://api.workmotion.com/v1
+  properties:
+  - url: https://workmotion.com/integrations/
+    type: Documentation
+  - url: openapi/workmotion-openapi.yml
+    type: OpenAPI
+  - url: collections/workmotion.postman_collection.json
+    type: PostmanCollection
+  - url: collections/workmotion.opencollection.json
+    type: OpenCollection
+  description: Upload, list, and download employment documents (contracts, payslips,
+    compliance paperwork, and signed agreements) attached to a talent.
+- aid: workmotion:workmotion-cost-calculator-api
+  name: WorkMotion Cost Calculator API
+  tags:
+  - Cost Calculator
+  - Employment Cost
+  - Compensation
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://workmotion.com/tools/employment-cost-calculator/
+  baseURL: https://api.workmotion.com/v1
+  properties:
+  - url: https://workmotion.com/tools/employment-cost-calculator/
+    type: Documentation
+  - url: openapi/workmotion-openapi.yml
+    type: OpenAPI
+  - url: collections/workmotion.postman_collection.json
+    type: PostmanCollection
+  - url: collections/workmotion.opencollection.json
+    type: OpenCollection
+  description: Calculate the fully-loaded cost of employment for a given gross
+    salary in a specific country, returning employer taxes, contributions, and
+    benefits so employers can price an offer before hiring.
+- aid: workmotion:workmotion-webhooks-api
+  name: WorkMotion Webhooks API
+  tags:
+  - Webhooks
+  - Events
+  - Notifications
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://workmotion.com/integrations/
+  baseURL: https://api.workmotion.com/v1
+  properties:
+  - url: https://workmotion.com/integrations/
+    type: Documentation
+  - url: openapi/workmotion-openapi.yml
+    type: OpenAPI
+  - url: collections/workmotion.postman_collection.json
+    type: PostmanCollection
+  - url: collections/workmotion.opencollection.json
+    type: OpenCollection
+  description: Register and manage webhook subscriptions to receive event
+    notifications for employee, contract, onboarding, and absence changes,
+    keeping external HRIS and payroll systems in sync.
+common:
+- type: LinkedIn
+  url: https://www.linkedin.com/company/workmotion
+- type: Website
+  url: https://www.workmotion.com
+- type: Documentation
+  url: https://workmotion.com/integrations/
+- type: Plans
+  url: plans/workmotion-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/workmotion-rate-limits.yml
+- type: FinOps
+  url: finops/workmotion-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

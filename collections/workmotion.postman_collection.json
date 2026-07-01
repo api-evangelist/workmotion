@@ -1,0 +1,228 @@
+{
+  "info": {
+    "name": "WorkMotion Partner API",
+    "description": "Modeled Postman collection for the WorkMotion global employment / Employer of Record (EOR) partner API. Endpoints and base URL are modeled from documented product surfaces; confirm against WorkMotion partner documentation.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      { "key": "token", "value": "{{bearerToken}}", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://api.workmotion.com/v1" },
+    { "key": "employeeId", "value": "" },
+    { "key": "contractId", "value": "" },
+    { "key": "onboardingId", "value": "" },
+    { "key": "absenceId", "value": "" },
+    { "key": "documentId", "value": "" },
+    { "key": "webhookId", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Employees",
+      "item": [
+        {
+          "name": "List employees",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/employees", "host": ["{{baseUrl}}"], "path": ["employees"] }
+          }
+        },
+        {
+          "name": "Create an employee",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"firstName\": \"\",\n  \"lastName\": \"\",\n  \"email\": \"\",\n  \"countryOfEmployment\": \"DE\",\n  \"employmentType\": \"eor\"\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/employees", "host": ["{{baseUrl}}"], "path": ["employees"] }
+          }
+        },
+        {
+          "name": "Retrieve an employee",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/employees/{{employeeId}}", "host": ["{{baseUrl}}"], "path": ["employees", "{{employeeId}}"] }
+          }
+        },
+        {
+          "name": "Update an employee",
+          "request": {
+            "method": "PATCH",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"status\": \"active\"\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/employees/{{employeeId}}", "host": ["{{baseUrl}}"], "path": ["employees", "{{employeeId}}"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Contracts",
+      "item": [
+        {
+          "name": "List contracts for an employee",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/employees/{{employeeId}}/contracts", "host": ["{{baseUrl}}"], "path": ["employees", "{{employeeId}}", "contracts"] }
+          }
+        },
+        {
+          "name": "Generate a contract",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"grossSalary\": 60000,\n  \"currency\": \"EUR\",\n  \"paidTimeOffDays\": 28,\n  \"startDate\": \"2026-08-01\"\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/employees/{{employeeId}}/contracts", "host": ["{{baseUrl}}"], "path": ["employees", "{{employeeId}}", "contracts"] }
+          }
+        },
+        {
+          "name": "Retrieve a contract",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/contracts/{{contractId}}", "host": ["{{baseUrl}}"], "path": ["contracts", "{{contractId}}"] }
+          }
+        },
+        {
+          "name": "Amend a contract",
+          "request": {
+            "method": "PATCH",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"grossSalary\": 66000,\n  \"currency\": \"EUR\",\n  \"effectiveDate\": \"2026-10-01\"\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/contracts/{{contractId}}", "host": ["{{baseUrl}}"], "path": ["contracts", "{{contractId}}"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Onboarding",
+      "item": [
+        {
+          "name": "Start an onboarding",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"country\": \"DE\",\n  \"employmentType\": \"eor\"\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/onboardings", "host": ["{{baseUrl}}"], "path": ["onboardings"] }
+          }
+        },
+        {
+          "name": "Retrieve onboarding status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/onboardings/{{onboardingId}}", "host": ["{{baseUrl}}"], "path": ["onboardings", "{{onboardingId}}"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Absences",
+      "item": [
+        {
+          "name": "List absences",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/absences", "host": ["{{baseUrl}}"], "path": ["absences"] }
+          }
+        },
+        {
+          "name": "Submit an absence request",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"employeeId\": \"\",\n  \"type\": \"paid_time_off\",\n  \"startDate\": \"2026-08-10\",\n  \"endDate\": \"2026-08-14\"\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/absences", "host": ["{{baseUrl}}"], "path": ["absences"] }
+          }
+        },
+        {
+          "name": "Retrieve an absence",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/absences/{{absenceId}}", "host": ["{{baseUrl}}"], "path": ["absences", "{{absenceId}}"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Documents",
+      "item": [
+        {
+          "name": "List documents for an employee",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/employees/{{employeeId}}/documents", "host": ["{{baseUrl}}"], "path": ["employees", "{{employeeId}}", "documents"] }
+          }
+        },
+        {
+          "name": "Upload a document",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": { "mode": "formdata", "formdata": [ { "key": "file", "type": "file", "src": [] }, { "key": "type", "value": "contract", "type": "text" } ] },
+            "url": { "raw": "{{baseUrl}}/employees/{{employeeId}}/documents", "host": ["{{baseUrl}}"], "path": ["employees", "{{employeeId}}", "documents"] }
+          }
+        },
+        {
+          "name": "Download a document",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/documents/{{documentId}}", "host": ["{{baseUrl}}"], "path": ["documents", "{{documentId}}"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cost Calculator",
+      "item": [
+        {
+          "name": "Calculate employment cost",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"country\": \"DE\",\n  \"grossSalary\": 60000,\n  \"currency\": \"EUR\",\n  \"bonus\": 5000\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/cost-calculator", "host": ["{{baseUrl}}"], "path": ["cost-calculator"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Webhooks",
+      "item": [
+        {
+          "name": "List webhook subscriptions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/webhooks", "host": ["{{baseUrl}}"], "path": ["webhooks"] }
+          }
+        },
+        {
+          "name": "Create a webhook subscription",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"url\": \"https://example.com/hooks/workmotion\",\n  \"events\": [\"employee.created\", \"contract.amended\", \"onboarding.completed\"]\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/webhooks", "host": ["{{baseUrl}}"], "path": ["webhooks"] }
+          }
+        },
+        {
+          "name": "Delete a webhook subscription",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/webhooks/{{webhookId}}", "host": ["{{baseUrl}}"], "path": ["webhooks", "{{webhookId}}"] }
+          }
+        }
+      ]
+    }
+  ]
+}

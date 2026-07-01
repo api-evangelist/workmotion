@@ -1,0 +1,101 @@
+aid: workmotion
+name: WorkMotion
+review:
+  question: Does WorkMotion expose a documented, openly published developer API, and which of its surfaces are confirmed vs modeled?
+  answer: partial
+  date: '2026-07-01'
+  reviewer: API Evangelist
+findings:
+  summary: |
+    WorkMotion (workmotion.com) is a global employment and Employer of Record
+    (EOR) platform. Its own marketing confirms an "Open API for Global Hiring"
+    and deep HRIS integrations (Personio, BambooHR, HiBob, Workday, SafetyWing),
+    with the Personio integration syncing employee data, PTO balances, and
+    payroll bidirectionally. This confirms the product surfaces modeled in this
+    catalog entry: employees/talents, employment contracts and contract
+    changes, accelerated onboarding, absences / time-off (PTO), documents /
+    e-signature, an employment cost calculator, and event/webhook style
+    syncing.
+
+    However, WorkMotion's partner / developer API reference is access-gated and
+    is NOT fully published to the open web. The developer subdomain
+    (developers.workmotion.com) did not resolve at review time, and no public
+    OpenAPI file, base URL, or endpoint list was located. Therefore the exact
+    base URL, paths, field names, and auth flow could not be independently
+    confirmed from public sources. The OpenAPI document and collections in this
+    repo are an honest MODEL of the documented product surfaces, not a verbatim
+    copy of an official spec.
+  productSurfacesConfirmed:
+    - Open API / partner API existence (stated on workmotion.com/integrations/)
+    - Employee (talent) management across 160+ countries
+    - Employment contracts and compliant contract changes
+    - Accelerated onboarding workflow (country -> details -> contract -> e-sign -> complete)
+    - Absences / paid time off (PTO synced via Personio integration)
+    - Documents and DocuSign e-signature
+    - Employment Cost Calculator (workmotion.com/tools/employment-cost-calculator/)
+    - Bidirectional data sync with HRIS (implies event/webhook mechanism)
+  authModeled:
+    scheme: 'OAuth 2.0 bearer (Authorization: Bearer <token>)'
+    note: >-
+      Bearer auth is modeled as the conventional scheme for WorkMotion's
+      partner API; the exact OAuth flow and token endpoint are not published
+      openly and must be confirmed with partner credentials.
+  endpointsConfirmed: []
+  endpointsModeled:
+    - GET    https://api.workmotion.com/v1/employees
+    - POST   https://api.workmotion.com/v1/employees
+    - GET    https://api.workmotion.com/v1/employees/{employeeId}
+    - PATCH  https://api.workmotion.com/v1/employees/{employeeId}
+    - GET    https://api.workmotion.com/v1/employees/{employeeId}/contracts
+    - POST   https://api.workmotion.com/v1/employees/{employeeId}/contracts
+    - GET    https://api.workmotion.com/v1/contracts/{contractId}
+    - PATCH  https://api.workmotion.com/v1/contracts/{contractId}
+    - POST   https://api.workmotion.com/v1/onboardings
+    - GET    https://api.workmotion.com/v1/onboardings/{onboardingId}
+    - GET    https://api.workmotion.com/v1/absences
+    - POST   https://api.workmotion.com/v1/absences
+    - GET    https://api.workmotion.com/v1/absences/{absenceId}
+    - GET    https://api.workmotion.com/v1/employees/{employeeId}/documents
+    - POST   https://api.workmotion.com/v1/employees/{employeeId}/documents
+    - GET    https://api.workmotion.com/v1/documents/{documentId}
+    - POST   https://api.workmotion.com/v1/cost-calculator
+    - GET    https://api.workmotion.com/v1/webhooks
+    - POST   https://api.workmotion.com/v1/webhooks
+    - DELETE https://api.workmotion.com/v1/webhooks/{webhookId}
+  baseURLModeled: https://api.workmotion.com/v1
+  gaps:
+    - No public OpenAPI / reference documentation could be located.
+    - developers.workmotion.com did not resolve; the base URL is modeled, not confirmed.
+    - No public rate-limit numbers were found (see rate-limits artifact, reconciled=false).
+    - No confirmed public GitHub organization for WorkMotion was found, so GitHubOrganization is omitted from apis.yml common.
+sources:
+  - url: https://workmotion.com/integrations/
+    type: Documentation
+    note: States "Seamless Global HR Integrations & Open API for Global Hiring"; lists Personio/BambooHR/HiBob/Workday/SafetyWing integrations.
+  - url: https://workmotion.com/accelerated-onboarding/
+    type: Documentation
+    note: Describes the onboarding workflow and contract generation / e-signature (DocuSign).
+  - url: https://workmotion.com/contracts-changes/
+    type: Documentation
+    note: Describes compliant contract changes / amendments.
+  - url: https://workmotion.com/tools/employment-cost-calculator/
+    type: Documentation
+    note: Employment Cost Calculator returning country-specific taxes, contributions, and benefits.
+  - url: https://workmotion.com/pricing/
+    type: Pricing
+    note: EOR, Direct Hiring, and Contractor Management plans with per-talent / per-contractor per-month starting prices.
+actions:
+  openapiPath: openapi/workmotion-openapi.yml
+  collectionsCreated:
+    - collections/workmotion.postman_collection.json
+    - collections/workmotion.opencollection.json
+  apisYmlCreated: true
+  reason: |
+    Product surfaces are confirmed from WorkMotion's own site, but the partner
+    API reference is gated. This entry models the API faithfully and flags
+    every endpoint and the base URL as modeled (not confirmed) so nothing is
+    misrepresented as verified. Reconcile against WorkMotion partner
+    documentation when access is granted.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
