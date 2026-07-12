@@ -169,6 +169,12 @@ apis:
     notifications for employee, contract, onboarding, and absence changes,
     keeping external HRIS and payroll systems in sync.
 common:
+- type: DomainSecurity
+  url: security/workmotion-domain-security.yml
+- type: Authentication
+  url: authentication/workmotion-authentication.yml
+- type: Blog
+  url: https://www.workmotion.com/blog/feed/
 - type: LinkedIn
   url: https://www.linkedin.com/company/workmotion
 - type: Website
