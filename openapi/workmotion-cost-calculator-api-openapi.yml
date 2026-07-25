@@ -1,0 +1,81 @@
+openapi: 3.0.3
+info:
+  title: WorkMotion Partner Absences Cost Calculator API
+  description: 'Partner / Open API for the WorkMotion global employment and Employer of Record (EOR) platform. It exposes employees (talents), employment contracts, onboarding workflows, absences and time-off, documents, employment cost calculations, and webhook subscriptions so that HRIS and payroll systems can integrate with WorkMotion''s managed employment infrastructure across 160+ countries.
+
+    NOTE: WorkMotion''s partner API is access-gated and its reference documentation is not fully published to the open web. The paths and schemas below are a faithful, honest model of the documented product surfaces (employees, contracts, onboarding, absences, documents, cost calculator, webhooks) rather than a verbatim copy of an official OpenAPI file. Verify exact paths, fields, and semantics against the WorkMotion partner documentation during reconciliation.'
+  termsOfService: https://workmotion.com/terms-and-conditions/
+  contact:
+    name: WorkMotion
+    url: https://workmotion.com/integrations/
+  version: '1.0'
+servers:
+- url: https://api.workmotion.com/v1
+  description: Production (modeled base URL; confirm with partner documentation)
+security:
+- bearerAuth: []
+tags:
+- name: Cost Calculator
+  description: Employment cost estimation by country.
+paths:
+  /cost-calculator:
+    post:
+      operationId: calculateEmploymentCost
+      tags:
+      - Cost Calculator
+      summary: Calculate employment cost
+      description: Returns the fully-loaded cost of employment for a given gross salary in a specific country, including employer taxes, contributions, and benefits.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CostCalculationRequest'
+      responses:
+        '200':
+          description: The employment cost breakdown.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CostCalculation'
+components:
+  schemas:
+    CostCalculation:
+      type: object
+      properties:
+        country:
+          type: string
+        currency:
+          type: string
+        grossSalary:
+          type: number
+        employerContributions:
+          type: number
+        taxes:
+          type: number
+        benefits:
+          type: number
+        totalEmploymentCost:
+          type: number
+    CostCalculationRequest:
+      type: object
+      required:
+      - country
+      - grossSalary
+      - currency
+      properties:
+        country:
+          type: string
+          description: ISO 3166-1 alpha-2 country code.
+        grossSalary:
+          type: number
+        currency:
+          type: string
+        bonus:
+          type: number
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 access token supplied as a Bearer token in the Authorization header. Partner credentials are issued by WorkMotion.
