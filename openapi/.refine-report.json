@@ -1,0 +1,26 @@
+{
+  "provider": "workmotion",
+  "sources": [
+    "workmotion-absences-api-openapi.yml",
+    "workmotion-contracts-api-openapi.yml",
+    "workmotion-cost-calculator-api-openapi.yml",
+    "workmotion-documents-api-openapi.yml",
+    "workmotion-employees-api-openapi.yml",
+    "workmotion-onboarding-api-openapi.yml",
+    "workmotion-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "workmotion-absences-api-openapi.yml",
+    "workmotion-contracts-api-openapi.yml",
+    "workmotion-cost-calculator-api-openapi.yml",
+    "workmotion-documents-api-openapi.yml",
+    "workmotion-employees-api-openapi.yml",
+    "workmotion-onboarding-api-openapi.yml",
+    "workmotion-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
