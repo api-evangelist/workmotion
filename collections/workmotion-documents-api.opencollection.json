@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WorkMotion Partner Absences Documents API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Documents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List documents for an employee",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.workmotion.com/v1/employees/:employeeId/documents",
+            "params": [
+              {
+                "name": "employeeId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List documents for an employee"
+        },
+        {
+          "info": {
+            "name": "Upload a document for an employee",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.workmotion.com/v1/employees/:employeeId/documents",
+            "params": [
+              {
+                "name": "employeeId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "type",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Upload a document for an employee"
+        },
+        {
+          "info": {
+            "name": "Download a document",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.workmotion.com/v1/documents/:documentId",
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Download a document"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

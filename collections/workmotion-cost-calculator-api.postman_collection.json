@@ -1,0 +1,140 @@
+{
+  "item": [
+    {
+      "id": "f6be578a-3292-4f18-b78e-7b8457e3775e",
+      "name": "Cost Calculator",
+      "description": {
+        "content": "Employment cost estimation by country.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7187ca85-5c97-43b9-96fc-e12c7af059b4",
+          "name": "Calculate employment cost",
+          "request": {
+            "name": "Calculate employment cost",
+            "description": {
+              "content": "Returns the fully-loaded cost of employment for a given gross salary in a specific country, including employer taxes, contributions, and benefits.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cost-calculator"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"country\": \"<string>\",\n  \"grossSalary\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"bonus\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "57caa7af-5981-451a-96b3-111b31ac089b",
+              "name": "The employment cost breakdown.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cost-calculator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"country\": \"<string>\",\n  \"grossSalary\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"bonus\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"country\": \"string\",\n  \"currency\": \"string\",\n  \"grossSalary\": 4574.298039537807,\n  \"employerContributions\": 1024.9036961611546,\n  \"taxes\": 7486.2098234859395,\n  \"benefits\": 4135.927986830508,\n  \"totalEmploymentCost\": 8340.14209371635\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.workmotion.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a9198dfc-ec41-4ec1-a20a-9637956a92df",
+    "name": "WorkMotion Partner Absences Cost Calculator API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Partner / Open API for the WorkMotion global employment and Employer of Record (EOR) platform. It exposes employees (talents), employment contracts, onboarding workflows, absences and time-off, documents, employment cost calculations, and webhook subscriptions so that HRIS and payroll systems can integrate with WorkMotion's managed employment infrastructure across 160+ countries.\nNOTE: WorkMotion's partner API is access-gated and its reference documentation is not fully published to the open web. The paths and schemas below are a faithful, honest model of the documented product surfaces (employees, contracts, onboarding, absences, documents, cost calculator, webhooks) rather than a verbatim copy of an official OpenAPI file. Verify exact paths, fields, and semantics against the WorkMotion partner documentation during reconciliation.\n\nContact Support:\n Name: WorkMotion",
+      "type": "text/plain"
+    }
+  }
+}

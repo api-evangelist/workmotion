@@ -1,0 +1,285 @@
+{
+  "item": [
+    {
+      "id": "eea69f07-7daa-4f74-b009-945fe03a5049",
+      "name": "Onboarding",
+      "description": {
+        "content": "Accelerated global onboarding workflows.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "429138c2-9381-416e-857c-98c7defc8ed3",
+          "name": "Start an onboarding",
+          "request": {
+            "name": "Start an onboarding",
+            "description": {
+              "content": "Initiates an accelerated onboarding for a new hire in a given country.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "onboardings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"country\": \"<string>\",\n  \"employeeId\": \"<string>\",\n  \"employmentType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9b90ce93-211e-4c63-ac04-a9bcbb1a3b7e",
+              "name": "Onboarding started.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboardings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"country\": \"<string>\",\n  \"employeeId\": \"<string>\",\n  \"employmentType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"employeeId\": \"string\",\n  \"country\": \"string\",\n  \"currentStep\": \"talent_details\",\n  \"status\": \"in_progress\",\n  \"createdAt\": \"2022-09-09T20:08:54.690Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "62a6ac36-7a54-47c0-957d-7aee8b31ae44",
+          "name": "Retrieve onboarding status",
+          "request": {
+            "name": "Retrieve onboarding status",
+            "description": {},
+            "url": {
+              "path": [
+                "onboardings",
+                ":onboardingId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "onboardingId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ca2b9ebd-2e67-4b40-aabc-3964cf310ae2",
+              "name": "The onboarding record with its current step.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboardings",
+                    ":onboardingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "onboardingId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"employeeId\": \"string\",\n  \"country\": \"string\",\n  \"currentStep\": \"talent_details\",\n  \"status\": \"in_progress\",\n  \"createdAt\": \"2022-09-09T20:08:54.690Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b152e942-45b6-4914-bf9d-67d4adad47cf",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "onboardings",
+                    ":onboardingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "onboardingId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.workmotion.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "730ae330-2b83-46a6-9bae-55f5cfc141fd",
+    "name": "WorkMotion Partner Absences Onboarding API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Partner / Open API for the WorkMotion global employment and Employer of Record (EOR) platform. It exposes employees (talents), employment contracts, onboarding workflows, absences and time-off, documents, employment cost calculations, and webhook subscriptions so that HRIS and payroll systems can integrate with WorkMotion's managed employment infrastructure across 160+ countries.\nNOTE: WorkMotion's partner API is access-gated and its reference documentation is not fully published to the open web. The paths and schemas below are a faithful, honest model of the documented product surfaces (employees, contracts, onboarding, absences, documents, cost calculator, webhooks) rather than a verbatim copy of an official OpenAPI file. Verify exact paths, fields, and semantics against the WorkMotion partner documentation during reconciliation.\n\nContact Support:\n Name: WorkMotion",
+      "type": "text/plain"
+    }
+  }
+}

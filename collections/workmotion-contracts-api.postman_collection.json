@@ -1,0 +1,517 @@
+{
+  "item": [
+    {
+      "id": "9196dba4-496f-490b-a53c-547bf3841764",
+      "name": "Contracts",
+      "description": {
+        "content": "Employment contracts and contract changes.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "247e0b2d-7b29-4be6-9064-65a25b8a967b",
+          "name": "List contracts for an employee",
+          "request": {
+            "name": "List contracts for an employee",
+            "description": {},
+            "url": {
+              "path": [
+                "employees",
+                ":employeeId",
+                "contracts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "employeeId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "34e2df09-cf7b-44b1-a409-51190b0aa0e0",
+              "name": "Contracts belonging to the employee.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "employees",
+                    ":employeeId",
+                    "contracts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "employeeId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"employeeId\": \"string\",\n      \"country\": \"string\",\n      \"status\": \"draft\",\n      \"grossSalary\": 4908.689581231292,\n      \"currency\": \"string\",\n      \"paidTimeOffDays\": 7417,\n      \"startDate\": \"1958-12-12\",\n      \"createdAt\": \"1988-11-21T02:26:53.042Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"employeeId\": \"string\",\n      \"country\": \"string\",\n      \"status\": \"amended\",\n      \"grossSalary\": 6828.708334318629,\n      \"currency\": \"string\",\n      \"paidTimeOffDays\": 7079,\n      \"startDate\": \"1991-10-26\",\n      \"createdAt\": \"1963-05-15T12:49:03.606Z\"\n    }\n  ],\n  \"pagination\": {\n    \"page\": 1563,\n    \"pageSize\": 851,\n    \"total\": 4663\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "06245f36-f1a8-4334-ae11-47f3b8c37831",
+          "name": "Generate a contract for an employee",
+          "request": {
+            "name": "Generate a contract for an employee",
+            "description": {
+              "content": "Generates a legally compliant employment contract for the talent.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "employees",
+                ":employeeId",
+                "contracts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "employeeId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"grossSalary\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"paidTimeOffDays\": \"<integer>\",\n  \"startDate\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b4533192-b0f2-4a53-9f58-13d8aaf0fbc2",
+              "name": "Contract created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "employees",
+                    ":employeeId",
+                    "contracts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "employeeId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"grossSalary\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"paidTimeOffDays\": \"<integer>\",\n  \"startDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"employeeId\": \"string\",\n  \"country\": \"string\",\n  \"status\": \"terminated\",\n  \"grossSalary\": 2598.1553233466493,\n  \"currency\": \"string\",\n  \"paidTimeOffDays\": 6714,\n  \"startDate\": \"2002-11-22\",\n  \"createdAt\": \"1951-06-13T00:06:47.236Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "47278d13-ccab-4bef-a0e3-5c0b307dcd63",
+          "name": "Retrieve a contract",
+          "request": {
+            "name": "Retrieve a contract",
+            "description": {},
+            "url": {
+              "path": [
+                "contracts",
+                ":contractId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contractId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c5475a18-2b0b-404e-9c84-75e28647fe9e",
+              "name": "The requested contract.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contracts",
+                    ":contractId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contractId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"employeeId\": \"string\",\n  \"country\": \"string\",\n  \"status\": \"terminated\",\n  \"grossSalary\": 2598.1553233466493,\n  \"currency\": \"string\",\n  \"paidTimeOffDays\": 6714,\n  \"startDate\": \"2002-11-22\",\n  \"createdAt\": \"1951-06-13T00:06:47.236Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "542416e4-96c2-4d70-a77a-5f67954f9cc3",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contracts",
+                    ":contractId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contractId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d6226ba9-d71a-4790-9a12-ec8023582285",
+          "name": "Amend a contract",
+          "request": {
+            "name": "Amend a contract",
+            "description": {
+              "content": "Applies a contract change (e.g., compensation or terms) to an existing contract.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "contracts",
+                ":contractId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contractId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"grossSalary\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"paidTimeOffDays\": \"<integer>\",\n  \"effectiveDate\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b7851437-610d-42fa-a34d-c0c9076950ff",
+              "name": "The amended contract.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contracts",
+                    ":contractId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contractId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"grossSalary\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"paidTimeOffDays\": \"<integer>\",\n  \"effectiveDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"employeeId\": \"string\",\n  \"country\": \"string\",\n  \"status\": \"terminated\",\n  \"grossSalary\": 2598.1553233466493,\n  \"currency\": \"string\",\n  \"paidTimeOffDays\": 6714,\n  \"startDate\": \"2002-11-22\",\n  \"createdAt\": \"1951-06-13T00:06:47.236Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.workmotion.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "dab0f67c-593a-495c-a6b5-a4301ebee048",
+    "name": "WorkMotion Partner Absences Contracts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Partner / Open API for the WorkMotion global employment and Employer of Record (EOR) platform. It exposes employees (talents), employment contracts, onboarding workflows, absences and time-off, documents, employment cost calculations, and webhook subscriptions so that HRIS and payroll systems can integrate with WorkMotion's managed employment infrastructure across 160+ countries.\nNOTE: WorkMotion's partner API is access-gated and its reference documentation is not fully published to the open web. The paths and schemas below are a faithful, honest model of the documented product surfaces (employees, contracts, onboarding, absences, documents, cost calculator, webhooks) rather than a verbatim copy of an official OpenAPI file. Verify exact paths, fields, and semantics against the WorkMotion partner documentation during reconciliation.\n\nContact Support:\n Name: WorkMotion",
+      "type": "text/plain"
+    }
+  }
+}

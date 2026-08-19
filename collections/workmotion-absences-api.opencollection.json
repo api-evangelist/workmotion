@@ -1,0 +1,85 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WorkMotion Partner Absences API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Absences",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List absences",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.workmotion.com/v1/absences",
+            "params": [
+              {
+                "name": "employeeId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List absences"
+        },
+        {
+          "info": {
+            "name": "Submit an absence request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.workmotion.com/v1/absences",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit an absence request"
+        },
+        {
+          "info": {
+            "name": "Retrieve an absence",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.workmotion.com/v1/absences/:absenceId",
+            "params": [
+              {
+                "name": "absenceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve an absence"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

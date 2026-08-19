@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WorkMotion Partner Absences Cost Calculator API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cost Calculator",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Calculate employment cost",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.workmotion.com/v1/cost-calculator",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the fully-loaded cost of employment for a given gross salary in a specific country, including employer taxes, contributions, and benefits."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
