@@ -173,6 +173,8 @@ apis:
   humanURL: https://workmotion.com/integrations/
   baseURL: https://api.workmotion.com/v1
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
