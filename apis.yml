@@ -36,6 +36,14 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/workmotion.png
 tags:
 - Employer of Record
+- Global Employment
+- HR
+- Payroll
+- Onboarding
+- Contractors
+- Compliance
+tags_raw:
+- Employer of Record
 - EOR
 - Global Employment
 - HR
