@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: WorkMotion Partner Absences Webhooks API
-  description: 'Partner / Open API for the WorkMotion global employment and Employer of Record (EOR) platform. It exposes employees (talents), employment contracts, onboarding workflows, absences and time-off, documents, employment cost calculations, and webhook subscriptions so that HRIS and payroll systems can integrate with WorkMotion''s managed employment infrastructure across 160+ countries.
-
-    NOTE: WorkMotion''s partner API is access-gated and its reference documentation is not fully published to the open web. The paths and schemas below are a faithful, honest model of the documented product surfaces (employees, contracts, onboarding, absences, documents, cost calculator, webhooks) rather than a verbatim copy of an official OpenAPI file. Verify exact paths, fields, and semantics against the WorkMotion partner documentation during reconciliation.'
+  title: WorkMotion Partner Webhooks API
+  description: Partner / Open API for the WorkMotion global employment and Employer of Record (EOR) platform.
   termsOfService: https://workmotion.com/terms-and-conditions/
   contact:
     name: WorkMotion
@@ -63,31 +61,14 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    Webhook:
+    Error:
       type: object
       properties:
-        id:
+        code:
           type: string
-        url:
+        message:
           type: string
-          format: uri
-        events:
-          type: array
-          items:
-            type: string
-        active:
-          type: boolean
-        createdAt:
-          type: string
-          format: date-time
     WebhookCreate:
       type: object
       required:
@@ -115,13 +96,30 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Webhook'
-    Error:
+    Webhook:
       type: object
       properties:
-        code:
+        id:
           type: string
-        message:
+        url:
           type: string
+          format: uri
+        events:
+          type: array
+          items:
+            type: string
+        active:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
     WebhookIdParam:
       name: webhookId

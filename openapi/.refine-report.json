@@ -1,13 +1,7 @@
 {
   "provider": "workmotion",
   "sources": [
-    "workmotion-absences-api-openapi.yml",
-    "workmotion-contracts-api-openapi.yml",
-    "workmotion-cost-calculator-api-openapi.yml",
-    "workmotion-documents-api-openapi.yml",
-    "workmotion-employees-api-openapi.yml",
-    "workmotion-onboarding-api-openapi.yml",
-    "workmotion-webhooks-api-openapi.yml"
+    "_original/workmotion-openapi.yml"
   ],
   "outputs": [
     "workmotion-absences-api-openapi.yml",
@@ -21,6 +15,18 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "workmotion-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "workmotion-absences-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "workmotion-contracts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "workmotion-cost-calculator-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "workmotion-documents-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "workmotion-employees-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "workmotion-onboarding-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "workmotion-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
