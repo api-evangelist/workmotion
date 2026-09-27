@@ -54,7 +54,30 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
+    OnboardingCreate:
+      type: object
+      required:
+      - country
+      properties:
+        employeeId:
+          type: string
+          description: Optional existing employee to onboard.
+        country:
+          type: string
+        employmentType:
+          type: string
+          enum:
+          - eor
+          - direct
+          - contractor
     Onboarding:
       type: object
       properties:
@@ -88,22 +111,6 @@ components:
           type: string
         message:
           type: string
-    OnboardingCreate:
-      type: object
-      required:
-      - country
-      properties:
-        employeeId:
-          type: string
-          description: Optional existing employee to onboard.
-        country:
-          type: string
-        employmentType:
-          type: string
-          enum:
-          - eor
-          - direct
-          - contractor
   parameters:
     OnboardingIdParam:
       name: onboardingId
@@ -111,13 +118,6 @@ components:
       required: true
       schema:
         type: string
-  responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     bearerAuth:
       type: http
