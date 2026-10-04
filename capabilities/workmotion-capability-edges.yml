@@ -1,0 +1,56 @@
+slug: workmotion
+provider: WorkMotion
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: Employees
+  spec_file: workmotion-employees-api-openapi.yml
+  capability_id: BC-300.70
+  capability_id_l1: BC-300
+  capability_name: HR Operations Management
+  confidence: 0.85
+  evidence: 'GET /employees  listEmployees; POST /employees  createEmployee; schemas: Employee, EmployeeCreate,
+    EmployeeUpdate'
+  reason: CRUD over the employee master record on a global employment/EOR platform is core HR Operations
+    Management (employee records, HR service delivery).
+- tag: Absences
+  spec_file: workmotion-absences-api-openapi.yml
+  capability_id: BC-300.70
+  capability_id_l1: BC-300
+  capability_name: HR Operations Management
+  confidence: 0.78
+  evidence: 'POST /absences  createAbsence  Submit an absence request; schemas: AbsenceCreate, Absence'
+  reason: Absence/time-off request capture and retrieval for employees of an EOR platform is day-to-day
+    HR administration and service delivery, i.e. HR Operations Management.
+- tag: Documents
+  spec_file: workmotion-documents-api-openapi.yml
+  capability_id: BC-300.70
+  capability_id_l1: BC-300
+  capability_name: HR Operations Management
+  confidence: 0.72
+  evidence: GET /employees/{employeeId}/documents  listDocuments  List documents for an employee; POST
+    .../documents  uploadDocument
+  reason: Employee-scoped document storage and retrieval is employee record keeping / HR service delivery.
+    It is a generic file surface, but every path is bound to an employeeId within an EOR HR platform.
+- tag: Onboarding
+  spec_file: workmotion-onboarding-api-openapi.yml
+  capability_id: BC-300.10
+  capability_id_l1: BC-300
+  capability_name: Talent Acquisition Management
+  confidence: 0.72
+  evidence: POST /onboardings  startOnboarding  Start an onboarding; GET /onboardings/{onboardingId} Retrieve
+    onboarding status; schemas OnboardingCreate, Onboarding — on a platform that lets companies "compliantly
+    hire, onboard, and pay international employees"
+  reason: Operations start and track employee onboarding workflows for an Employer-of-Record platform,
+    which is employee hiring/onboarding under Human Capital Management. Sub-capability 300.10 explicitly
+    covers onboarding, though some aspects could sit in HR Operations, hence moderate confidence.

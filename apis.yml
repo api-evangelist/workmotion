@@ -212,6 +212,9 @@ apis:
   - type: Documentation
     url: https://workmotion.com/tools/employment-cost-calculator/
 common:
+- type: CapabilityMap
+  url: capabilities/workmotion-capability-edges.yml
+  name: WorkMotion Business Capability Map
 - type: AgenticAccess
   url: agentic-access/workmotion-agentic-access.yml
 - type: DomainSecurity
