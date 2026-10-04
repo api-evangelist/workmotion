@@ -77,14 +77,27 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    DocumentIdParam:
+      name: documentId
+      in: path
+      required: true
+      schema:
+        type: string
+    EmployeeIdParam:
+      name: employeeId
+      in: path
+      required: true
+      schema:
+        type: string
   schemas:
-    DocumentList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Document'
     Error:
       type: object
       properties:
@@ -92,6 +105,13 @@ components:
           type: string
         message:
           type: string
+    DocumentList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Document'
     Document:
       type: object
       properties:
@@ -108,26 +128,6 @@ components:
         createdAt:
           type: string
           format: date-time
-  parameters:
-    DocumentIdParam:
-      name: documentId
-      in: path
-      required: true
-      schema:
-        type: string
-    EmployeeIdParam:
-      name: employeeId
-      in: path
-      required: true
-      schema:
-        type: string
-  responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     bearerAuth:
       type: http

@@ -62,23 +62,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    Webhook:
-      type: object
-      properties:
-        id:
-          type: string
-        url:
-          type: string
-          format: uri
-        events:
-          type: array
-          items:
-            type: string
-        active:
-          type: boolean
-        createdAt:
-          type: string
-          format: date-time
     WebhookCreate:
       type: object
       required:
@@ -106,6 +89,23 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Webhook'
+    Webhook:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+          format: uri
+        events:
+          type: array
+          items:
+            type: string
+        active:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
     Error:
       type: object
       properties:
@@ -113,13 +113,6 @@ components:
           type: string
         message:
           type: string
-  parameters:
-    WebhookIdParam:
-      name: webhookId
-      in: path
-      required: true
-      schema:
-        type: string
   responses:
     NotFound:
       description: Resource not found.
@@ -127,6 +120,13 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+  parameters:
+    WebhookIdParam:
+      name: webhookId
+      in: path
+      required: true
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: http

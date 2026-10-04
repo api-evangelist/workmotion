@@ -110,20 +110,43 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    Unauthorized:
-      description: Missing or invalid access token.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
+    EmployeeCreate:
+      type: object
+      required:
+      - firstName
+      - lastName
+      - email
+      - countryOfEmployment
+      - employmentType
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+          format: email
+        countryOfEmployment:
+          type: string
+        employmentType:
+          type: string
+          enum:
+          - eor
+          - direct
+          - contractor
+        startDate:
+          type: string
+          format: date
+    Pagination:
+      type: object
+      properties:
+        page:
+          type: integer
+        pageSize:
+          type: integer
+        total:
+          type: integer
     EmployeeUpdate:
       type: object
       properties:
@@ -187,43 +210,16 @@ components:
           type: string
         message:
           type: string
-    EmployeeCreate:
-      type: object
-      required:
-      - firstName
-      - lastName
-      - email
-      - countryOfEmployment
-      - employmentType
-      properties:
-        firstName:
-          type: string
-        lastName:
-          type: string
-        email:
-          type: string
-          format: email
-        countryOfEmployment:
-          type: string
-        employmentType:
-          type: string
-          enum:
-          - eor
-          - direct
-          - contractor
-        startDate:
-          type: string
-          format: date
-    Pagination:
-      type: object
-      properties:
-        page:
-          type: integer
-        pageSize:
-          type: integer
-        total:
-          type: integer
   parameters:
+    PageSizeParam:
+      name: pageSize
+      in: query
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 200
+        default: 50
     PageParam:
       name: page
       in: query
@@ -238,15 +234,19 @@ components:
       required: true
       schema:
         type: string
-    PageSizeParam:
-      name: pageSize
-      in: query
-      required: false
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 200
-        default: 50
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Missing or invalid access token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     bearerAuth:
       type: http

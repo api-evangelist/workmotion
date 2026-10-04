@@ -88,37 +88,15 @@ paths:
                 $ref: '#/components/schemas/Contract'
 components:
   schemas:
-    ContractCreate:
+    Pagination:
       type: object
-      required:
-      - grossSalary
-      - currency
       properties:
-        grossSalary:
-          type: number
-        currency:
-          type: string
-        paidTimeOffDays:
+        page:
           type: integer
-        startDate:
-          type: string
-          format: date
-    Error:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
-    ContractList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Contract'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
+        pageSize:
+          type: integer
+        total:
+          type: integer
     ContractChange:
       type: object
       description: A change applied to an existing contract.
@@ -132,15 +110,6 @@ components:
         effectiveDate:
           type: string
           format: date
-    Pagination:
-      type: object
-      properties:
-        page:
-          type: integer
-        pageSize:
-          type: integer
-        total:
-          type: integer
     Contract:
       type: object
       properties:
@@ -170,6 +139,37 @@ components:
         createdAt:
           type: string
           format: date-time
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+    ContractCreate:
+      type: object
+      required:
+      - grossSalary
+      - currency
+      properties:
+        grossSalary:
+          type: number
+        currency:
+          type: string
+        paidTimeOffDays:
+          type: integer
+        startDate:
+          type: string
+          format: date
+    ContractList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contract'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
   responses:
     NotFound:
       description: Resource not found.

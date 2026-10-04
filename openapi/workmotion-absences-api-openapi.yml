@@ -73,70 +73,7 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    AbsenceIdParam:
-      name: absenceId
-      in: path
-      required: true
-      schema:
-        type: string
-    PageParam:
-      name: page
-      in: query
-      required: false
-      schema:
-        type: integer
-        minimum: 0
-        default: 0
-    PageSizeParam:
-      name: pageSize
-      in: query
-      required: false
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 200
-        default: 50
   schemas:
-    AbsenceCreate:
-      type: object
-      required:
-      - employeeId
-      - type
-      - startDate
-      - endDate
-      properties:
-        employeeId:
-          type: string
-        type:
-          type: string
-          enum:
-          - paid_time_off
-          - sick_leave
-          - unpaid_leave
-          - other
-        startDate:
-          type: string
-          format: date
-        endDate:
-          type: string
-          format: date
-    AbsenceList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Absence'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-    Error:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
     Pagination:
       type: object
       properties:
@@ -146,6 +83,15 @@ components:
           type: integer
         total:
           type: integer
+    AbsenceList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Absence'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
     Absence:
       type: object
       properties:
@@ -173,6 +119,60 @@ components:
           - approved
           - rejected
           - cancelled
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+    AbsenceCreate:
+      type: object
+      required:
+      - employeeId
+      - type
+      - startDate
+      - endDate
+      properties:
+        employeeId:
+          type: string
+        type:
+          type: string
+          enum:
+          - paid_time_off
+          - sick_leave
+          - unpaid_leave
+          - other
+        startDate:
+          type: string
+          format: date
+        endDate:
+          type: string
+          format: date
+  parameters:
+    PageSizeParam:
+      name: pageSize
+      in: query
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 200
+        default: 50
+    PageParam:
+      name: page
+      in: query
+      required: false
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+    AbsenceIdParam:
+      name: absenceId
+      in: path
+      required: true
+      schema:
+        type: string
   responses:
     NotFound:
       description: Resource not found.

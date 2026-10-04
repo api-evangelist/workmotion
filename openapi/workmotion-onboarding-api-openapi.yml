@@ -54,6 +54,20 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    OnboardingIdParam:
+      name: onboardingId
+      in: path
+      required: true
+      schema:
+        type: string
   schemas:
     OnboardingCreate:
       type: object
@@ -104,20 +118,6 @@ components:
         createdAt:
           type: string
           format: date-time
-  parameters:
-    OnboardingIdParam:
-      name: onboardingId
-      in: path
-      required: true
-      schema:
-        type: string
-  responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     bearerAuth:
       type: http

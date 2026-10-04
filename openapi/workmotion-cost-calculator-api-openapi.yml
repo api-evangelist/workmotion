@@ -38,6 +38,22 @@ paths:
                 $ref: '#/components/schemas/CostCalculation'
 components:
   schemas:
+    CostCalculationRequest:
+      type: object
+      required:
+      - country
+      - grossSalary
+      - currency
+      properties:
+        country:
+          type: string
+          description: ISO 3166-1 alpha-2 country code.
+        grossSalary:
+          type: number
+        currency:
+          type: string
+        bonus:
+          type: number
     CostCalculation:
       type: object
       properties:
@@ -54,22 +70,6 @@ components:
         benefits:
           type: number
         totalEmploymentCost:
-          type: number
-    CostCalculationRequest:
-      type: object
-      required:
-      - country
-      - grossSalary
-      - currency
-      properties:
-        country:
-          type: string
-          description: ISO 3166-1 alpha-2 country code.
-        grossSalary:
-          type: number
-        currency:
-          type: string
-        bonus:
           type: number
   securitySchemes:
     bearerAuth:
