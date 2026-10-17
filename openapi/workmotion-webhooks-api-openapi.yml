@@ -61,27 +61,21 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    WebhookCreate:
+    Error:
       type: object
-      required:
-      - url
-      - events
       properties:
-        url:
+        code:
           type: string
-          format: uri
-        events:
-          type: array
-          items:
-            type: string
-            enum:
-            - employee.created
-            - employee.updated
-            - contract.created
-            - contract.amended
-            - onboarding.completed
-            - absence.approved
+        message:
+          type: string
     WebhookList:
       type: object
       properties:
@@ -106,20 +100,26 @@ components:
         createdAt:
           type: string
           format: date-time
-    Error:
+    WebhookCreate:
       type: object
+      required:
+      - url
+      - events
       properties:
-        code:
+        url:
           type: string
-        message:
-          type: string
-  responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+          format: uri
+        events:
+          type: array
+          items:
+            type: string
+            enum:
+            - employee.created
+            - employee.updated
+            - contract.created
+            - contract.amended
+            - onboarding.completed
+            - absence.approved
   parameters:
     WebhookIdParam:
       name: webhookId

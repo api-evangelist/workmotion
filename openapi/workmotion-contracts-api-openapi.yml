@@ -87,16 +87,27 @@ paths:
               schema:
                 $ref: '#/components/schemas/Contract'
 components:
+  parameters:
+    ContractIdParam:
+      name: contractId
+      in: path
+      required: true
+      schema:
+        type: string
+    EmployeeIdParam:
+      name: employeeId
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Pagination:
-      type: object
-      properties:
-        page:
-          type: integer
-        pageSize:
-          type: integer
-        total:
-          type: integer
     ContractChange:
       type: object
       description: A change applied to an existing contract.
@@ -110,6 +121,13 @@ components:
         effectiveDate:
           type: string
           format: date
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
     Contract:
       type: object
       properties:
@@ -139,13 +157,15 @@ components:
         createdAt:
           type: string
           format: date-time
-    Error:
+    Pagination:
       type: object
       properties:
-        code:
-          type: string
-        message:
-          type: string
+        page:
+          type: integer
+        pageSize:
+          type: integer
+        total:
+          type: integer
     ContractCreate:
       type: object
       required:
@@ -170,26 +190,6 @@ components:
             $ref: '#/components/schemas/Contract'
         pagination:
           $ref: '#/components/schemas/Pagination'
-  responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-  parameters:
-    ContractIdParam:
-      name: contractId
-      in: path
-      required: true
-      schema:
-        type: string
-    EmployeeIdParam:
-      name: employeeId
-      in: path
-      required: true
-      schema:
-        type: string
   securitySchemes:
     bearerAuth:
       type: http

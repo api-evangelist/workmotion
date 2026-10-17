@@ -84,27 +84,7 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-  parameters:
-    DocumentIdParam:
-      name: documentId
-      in: path
-      required: true
-      schema:
-        type: string
-    EmployeeIdParam:
-      name: employeeId
-      in: path
-      required: true
-      schema:
-        type: string
   schemas:
-    Error:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
     DocumentList:
       type: object
       properties:
@@ -112,6 +92,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Document'
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
     Document:
       type: object
       properties:
@@ -128,6 +115,19 @@ components:
         createdAt:
           type: string
           format: date-time
+  parameters:
+    EmployeeIdParam:
+      name: employeeId
+      in: path
+      required: true
+      schema:
+        type: string
+    DocumentIdParam:
+      name: documentId
+      in: path
+      required: true
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: http
